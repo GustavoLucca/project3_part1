@@ -1,17 +1,24 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/aarch64/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/aarch64/ninja -G Ninja -S /Users/gerardocastillo/CLionProjects/EncryptedChat -B /Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug
--- The C compiler identification is AppleClang 15.0.0.15000309
--- The CXX compiler identification is AppleClang 15.0.0.15000309
+"C:\Users\Gustavo Lucca\AppData\Local\Programs\CLion\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Users/Gustavo Lucca/AppData/Local/Programs/CLion/bin/ninja/win/x64/ninja.exe" -G Ninja -S "C:\Users\Gustavo Lucca\Downloads\project3_part1\project3_part1" -B "C:\Users\Gustavo Lucca\Downloads\project3_part1\project3_part1\cmake-build-debug"
+-- The C compiler identification is GNU 13.1.0
+-- The CXX compiler identification is GNU 13.1.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
--- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc - skipped
+-- Check for working C compiler: C:/Users/Gustavo Lucca/AppData/Local/Programs/CLion/bin/mingw/bin/gcc.exe - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Detecting CXX compiler ABI info
 -- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ - skipped
+-- Check for working CXX compiler: C:/Users/Gustavo Lucca/AppData/Local/Programs/CLion/bin/mingw/bin/g++.exe - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Found OpenSSL: /opt/homebrew/lib/libcrypto.dylib (found version "3.2.1")  
--- Configuring done (6.3s)
--- Generating done (0.0s)
--- Build files have been written to: /Users/gerardocastillo/CLionProjects/EncryptedChat/cmake-build-debug
+CMake Error at C:/Users/Gustavo Lucca/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake:233 (message):
+  Could NOT find OpenSSL, try to set the path to OpenSSL root folder in the
+  system variable OPENSSL_ROOT_DIR (missing: OPENSSL_CRYPTO_LIBRARY
+  OPENSSL_INCLUDE_DIR)
+Call Stack (most recent call first):
+  C:/Users/Gustavo Lucca/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/FindPackageHandleStandardArgs.cmake:603 (_FPHSA_FAILURE_MESSAGE)
+  C:/Users/Gustavo Lucca/AppData/Local/Programs/CLion/bin/cmake/win/x64/share/cmake-3.30/Modules/FindOpenSSL.cmake:689 (find_package_handle_standard_args)
+  CMakeLists.txt:7 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
