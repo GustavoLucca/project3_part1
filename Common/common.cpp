@@ -17,9 +17,6 @@ void encryptMessage(const std::string& plaintext, unsigned char* ciphertext, int
     EVP_CIPHER_CTX* ctx;
     int len;
 
-    // only really care to handleErrors() if we get an error code from any of our OpenSSL functions
-    // works fine as a result
-
     // Call the method from OpenSSL to create and initialize the context. Then call the handleErrors() method
     ctx = EVP_CIPHER_CTX_new();
     if (!ctx) {
@@ -51,29 +48,25 @@ void encryptMessage(const std::string& plaintext, unsigned char* ciphertext, int
 }
 
 void decryptMessage(EVP_CIPHER_CTX* ctx, const unsigned char* encryptedData, int encryptedLen, const unsigned char* aesKey, const unsigned char* iv, unsigned char* decryptedBuffer) {
-    int decryptedLen = 0;
-    int finalDecryptedLen = 0;
-
-    // only really care to handleErrors() if we get an error code from any of our OpenSSL functions
-    // works fine as a result
-
     // Call the method from OpenSSL to initialize decryption context with AES-256-CBC. Then call handleErrors()
-    if (EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, aesKey, iv) != 1) {
+    if (EVP_DecryptInit_ex(ctx, EVP_aes_256_cbc(), NULL, aesKey, iv) != true) {
         handleErrors();
     }
 
+    int decryptedLen;
     // Call the method from OpenSSL to decrypt the encrypted data. Then call handleErrors()
-    if (EVP_DecryptUpdate(ctx, decryptedBuffer, &decryptedLen, encryptedData, encryptedLen) != 1) {
+    if (EVP_DecryptUpdate(ctx, decryptedBuffer, &decryptedLen, encryptedData, encryptedLen) != true) {
         handleErrors();
     }
 
-    finalDecryptedLen = decryptedLen;
 
+    int finalDecryptedLen;
     // Call the method from OpenSSL to finalize decryption. Then call handleErrors()
-    if (EVP_DecryptFinal_ex(ctx, decryptedBuffer + decryptedLen, &decryptedLen) != 1) {
+    if (EVP_DecryptFinal_ex(ctx, decryptedBuffer + decryptedLen, &finalDecryptedLen) != true) {
         handleErrors();
     }
 
-    finalDecryptedLen += decryptedLen;
-    decryptedBuffer[finalDecryptedLen] = '\0';
+    decryptedLen += finalDecryptedLen;
+
+    decryptedBuffer[decryptedLen] = '\0';
 }
