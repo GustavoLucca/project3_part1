@@ -16,7 +16,7 @@ void handleErrors() {
 void encryptMessage(const std::string& plaintext, unsigned char* ciphertext, int* ciphertext_len, unsigned char* iv) {
     EVP_CIPHER_CTX* ctx;
     int len;
-
+    ctx = EVP_CIPHER_CTX_new();
     // Call the method from OpenSSL to create and initialize the context. Then call the handleErrors() method
     if (ctx != EVP_CIPHER_CTX_new()) {
         handleErrors();
@@ -29,6 +29,7 @@ void encryptMessage(const std::string& plaintext, unsigned char* ciphertext, int
     if (EVP_EncryptUpdate(ctx, ciphertext, &len, (unsigned char*)plaintext.c_str(), plaintext.length()) != true) {
         handleErrors();
     }
+    *ciphertext_len = len;
     // Call the method from OpenSSL to finalize encryption. Then call the handleErrors() method
     if (EVP_EncryptFinal_ex(ctx, ciphertext + len, &len) != true) {
         handleErrors();
